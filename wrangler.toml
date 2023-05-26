@@ -2,5 +2,14 @@ name = "worker-rust"
 main = "build/worker/shim.mjs"
 compatibility_date = "2023-03-22"
 
+[durable_objects]
+bindings = [
+    { name = "SYNC", class_name = "Sync" }
+]
+
+[[migrations]]
+new_classes = ["Sync"]
+tag = "v1"
+
 [build]
 command = "cargo install -q worker-build && worker-build --release"
